@@ -1,0 +1,216 @@
+<!doctype html>
+<html ⚡>
+<head>
+  <meta charset="utf-8">
+  <title>Nolo Lead Path R&D</title>
+  <link rel="canonical" href="/index.html" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+  <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+  <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+  <style amp-custom>
+    body {
+      padding-left: 10px;
+      padding-right: 10px;
+      font-family: sans-serif;
+    }
+    h1, h2 {
+      margin: 1rem;
+    }
+    .hidden {
+      display:none !important;
+    }
+    fieldset {
+      border: none;
+      position: relative;
+      padding: 0;
+      margin: 0;
+    }
+    #noloPathQuestions div[role=listitem]{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    .button {
+      background: orange;
+      color: white;
+      padding: 10px 20px;
+	}
+    .button.question-answer {
+      background: white;
+      color: black;
+      border: lightgray solid 2px;
+      
+    }
+    .button.btn-submit {
+      background: deepskyblue;
+      border: none;
+      text-transform: uppercase;
+      width: 100%;
+    }
+    .form-question-item ul {
+      padding: 0;
+      width: 100%;
+    }
+    .form-question-item li {
+      width: 100%;
+      list-style: none;
+      margin-bottom: 10px;
+    }
+    .form-question-item li div {
+      text-align: center;
+    }
+    .form-question-item .form-textarea {
+      width: 98%;
+    }
+    .form-question-item .form-input {
+      margin-top: 20px;
+      height: 25px;
+    }
+    .contact-form input {
+      width: 99%;
+      height: 25px;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+    select {
+	  padding: 10px 20px;
+      border-color: darkgrey;
+      background-color: white;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      text-align: center;
+      vertical-align: middle;
+    }
+  </style>
+
+</head>
+<body>
+  <amp-state id="noloPath">
+    <script type="application/json">
+      {
+        "step": -1
+      }
+    </script>
+  </amp-state>
+  <amp-state id="practiceAreaSelect" src="https://validate-form.getsandbox.com/getRoutingQuestion?pid=QUERY_PARAM(pid)" data-amp-replace="CLIENT_ID QUERY_PARAM">
+  </amp-state>
+  <div class="overlay" [class]="noloPath.step < 0 ? 'overlay' : 'hidden'">
+    <div>
+      <span on="tap:AMP.setState({noloPath: {step: practiceAreaSelect.routingQuestion.length > 0 ? 0 : 1}})" tabindex=99999 role="start">START</span>
+    </div>
+  </div>
+  <!-- <h2> -->
+    <!-- Damages: How Much is a Personal Injury Case Worth? -->
+  <!-- </h2> -->
+  <!-- <hr /> -->
+  <div [class]="noloPath.step == 0 ? '' : 'hidden'" class="practice_area_select">
+    <label>Did the injury occur at work?</label>
+    <amp-list id="routingOption" layout="fixed-height" height=100 [src]="practiceAreaSelect" single-item>
+      <template type="amp-mustache">
+        <select name="practice_id" class="" [class]="practiceAreaSelect.routingQuestion.length > 0 ? '' : 'hidden'" on="change:AMP.setState({practiceAreaSelect: {practiceId: event.value},noloPath: {step: 1}})">
+          <option value="0" selected="selected">--Select an answer--</option>
+          {{#routingQuestion}}
+            <option value="{{value}}">{{name}}</option>
+          {{/routingQuestion}}
+        </select>
+      </template>
+    </amp-list>
+  </div>
+
+  <amp-state id="questions" [src]="'https://validate-form.getsandbox.com/getQuestions?pid=' + practiceAreaSelect.practiceId">
+  </amp-state>
+
+  <form method="GET" custom-validation-reporting="show-all-on-submit" action="https://validate-form.getsandbox.com/validate_form" action-xhr="https://validate-form.getsandbox.com/validate_form" target="_blank" [class]="practice_id_selected != 0 ? 'noloPath-form' : 'hidden'" class="hidden">
+    <div [text]="'Step ' + noloPath.step + '/' + (questions.length + 1)"></div>
+    <hr>
+    <fieldset [class]="noloPath.step <= questions.length ? '' : 'hidden'">
+      <amp-list id="noloPathQuestions" layout="fixed-height" height=450 [height]="(questions[noloPath.step-1].answer.length > 0 ? (questions[noloPath.step-1].answer.length * 60 + 20) : 100)" [src]="questions">
+        <template type="amp-mustache">
+          <div data-step="{{step_idx}}" class="form-question-item question_step_{{step_idx}} {{validation}} hidden" [class]="(noloPath.step == {{step_idx}} ? '' : 'hidden ') + 'form-question-item question_step_{{step_idx}}'">
+            <label class="form-question-label">{{question}}</label><br>
+            {{#is_select}}
+              <ul>
+                {{#answer}}
+                  <li>
+                    <div class="button question-answer" tabindex="99" role="option_select" on="tap:AMP.setState({qa_{{question_id_key}} : '{{option_value}}', noloPath:{step: (noloPath.step < questions.length ? noloPath.step + 1 : noloPath.step)} })">{{option_short}}</div>
+                  </li>
+                {{/answer}}
+              </ul>
+
+              <input type="hidden" value="0" [value]="qa_{{question_id_key}}" name="{{field_name}}">
+			  <input type="number" hidden name="{{field_name}}_step" value={{step_idx}}>
+            {{/is_select}}
+            {{#is_textfield}}
+              {{#required}}
+                <input id="{{id}}" type="{{type}}" class="input form-question form-input" name="{{field_name}}" placeholder="{{placeholder}}">
+              {{/required}}
+              {{^required}}
+                <input type="{{type}}" id="{{id}}" class="input form-question form-input" name="{{field_name}}" placeholder="{{placeholder}}">
+                {{/required}}
+                <span class="button" tabindex="99" role="next_step" on="tap:AMP.setState({noloPath:{step: (noloPath.step < questions.length ? noloPath.step + 1 : noloPath.step)}})">
+                  NEXT >
+                </span>
+                <input type="number" hidden name="{{field_name}}_step" value={{step_idx}}>
+            {{/is_textfield}}
+            {{#is_textarea}}
+              {{#required}}
+                <textarea rows=4 class="input form-question form-textarea" name="{{field_name}}" placeholder="{{placeholder}}" on="change:AMP.setState({noloPath:{step: (noloPath.step < questions.length ? noloPath.step + 1 : noloPath.step)}})"></textarea>
+              {{/required}}
+              {{^required}}
+                <textarea rows=4 class="input form-question form-textarea" name="{{field_name}}" placeholder="{{placeholder}}" on="change:AMP.setState({noloPath:{step: (noloPath.step < questions.length ? noloPath.step + 1 : noloPath.step)}})"></textarea>
+                {{/required}}
+				<input type="number" hidden name="{{field_name}}_step" value={{step_idx}}>
+            {{/is_textarea}}
+
+            {{#is_radio}}
+              <input type="radio" class="form-question" value="{{value}}" name="{{field_name}}">{{value}}
+            {{/is_radio}}
+          </div>
+        </template>
+      </amp-list>
+
+      <span class="hidden" [class]="noloPath.step == questions.length ? 'button' : 'hidden'" role="continue" tabindex="99" on="tap:AMP.setState({noloPath: {step: questions.length + 1}})">Get FREE evaluation</span>
+    </fieldset>
+    <div class="hidden" [class]="questions.length > 0 && noloPath.step == questions.length + 1 ? 'contact-form' : 'hidden'">
+      <input placeholder="First Name" name="first_name">
+      <input placeholder="Last Name" name="last_name">
+      <input placeholder="Email Address" name="mail">
+      <input placeholder="Phone Number" name="phone">
+    </div>
+    <br>
+    <div [class]="noloPath.step > 1 && (noloPath.step <= questions.length+1) ? '' : 'hidden'" role="back" tabindex="99" class="hidden" on="tap:AMP.setState({noloPath:{step: noloPath.step - 1}})">Back</div><br>
+    <input type="submit" value="Submit" class="hidden" [class]="questions.length > 0 && noloPath.step == questions.length + 1 ? 'button btn-submit' : 'hidden'">
+    <div submit-success>
+      <template type="amp-mustache">
+        Submit successful {{status}}
+      </template>
+    </div>
+    <div submitting>
+      <template type="amp-mustache">
+        Submitting.. Please wait.
+      </template>
+    </div>
+    <div submit-error>
+      <template type="amp-mustache">
+        {{#verifyErrors}}
+          <p style="color: red;">Field - <span style="cursor: pointer; text-decoration: underlined; font-weight: bold;" tabindex=100 role="error-step" on="tap:AMP.setState({noloPath: {step: {{step_index}} }})">{{name}}</span>: {{message}}</p>
+        {{/verifyErrors}} {{^verifyErrors}}
+          <p>Something went wrong. Try again later?</p>
+          {{/verifyErrors}}
+          <p>Submission failed</p>
+      </template>
+    </div>
+  </form>
+</body>
+</html>
