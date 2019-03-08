@@ -1,11 +1,11 @@
 {
-  "name": "Nolo",
+  "name": "Nolo PWA",
   "short_name": "Nolo",
   "theme_color": "#2196f3",
   "background_color": "#2196f3",
   "display": "standalone",
   "Scope": "/",
-  "start_url": "/nolo/amp.html",
+  "start_url": "/nolo/pwa.html",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
