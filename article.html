@@ -167,7 +167,7 @@ preview: default
       </p>
 
       <figure class="figure">
-        <amp-img src="/nolo/img/landscape_village_1280x853.jpg" width="1280" height="768" layout="responsive"></amp-img>
+        <amp-img src="/nolo/images/landscape_village_1280x853.jpg" width="1280" height="768" layout="responsive"></amp-img>
         <figcaption>Here is a responsive image.</figcaption>
       </figure>
 
@@ -199,15 +199,15 @@ preview: default
       <!-- Use `amp-carousel` for image galleries. Learn more about creating image galleries in AMP [here](/advanced/image_galleries_with_amp-carousel/).  -->
       <amp-carousel width="1280" height="1000" layout="responsive" type="slides">
         <figure class="figure">
-          <amp-img src="/nolo/img/landscape_lake_1280x857.jpg" width="1280" height="857" layout="responsive"></amp-img>
+          <amp-img src="/nolo/images/landscape_lake_1280x857.jpg" width="1280" height="857" layout="responsive"></amp-img>
           <figcaption>Each image has a different caption.</figcaption>
         </figure>
         <figure class="figure">
-          <amp-img src="/nolo/img/landscape_village_1280x853.jpg" width="1280" height="853" layout="responsive"></amp-img>
+          <amp-img src="/nolo/images/landscape_village_1280x853.jpg" width="1280" height="853" layout="responsive"></amp-img>
           <figcaption>This caption is different.</figcaption>
         </figure>
         <figure class="figure">
-          <amp-img src="/nolo/img/landscape_desert_1280x853.jpg" width="1280" height="853" layout="responsive"></amp-img>
+          <amp-img src="/nolo/images/landscape_desert_1280x853.jpg" width="1280" height="853" layout="responsive"></amp-img>
           <figcaption>The third image has its caption.</figcaption>
         </figure>
       </amp-carousel>
@@ -234,11 +234,6 @@ preview: default
       <h2>Related Articles</h2>
       <p>These articles might be interesting for you as well:</p>
       <!-- It's a good idea to recommend related content to your readers. With `amp-list` it is possible to dynamically include personalized content into your AMPs. It's a good idea to link to the AMP version of related content in order to keep the user in the fast AMP world. Learn more about `amp-list` [here](/components/amp-list/) -->
-      <amp-list width="300" height="75" layout="responsive" src="/json/related_articles.json">
-        <template type="amp-mustache">
-          <a class="related" href="{{url}}"><amp-img width="101" height="75" src="{{thumbnail}}"></amp-img><span>{{title}}</span></a>
-        </template>
-      </amp-list>
       </main>
 
       <!-- ## Cookie consent -->
