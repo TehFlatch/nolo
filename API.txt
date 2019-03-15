@@ -1,0 +1,68 @@
+We will need 3 additional APIs to be created for the purposes of the AMP nolo lead version.
+
+#1 GET Method "getQuestions":
+- Input parameter will be "pid" which will be the practice area id
+- Response value should be an array with all the questions
+- It remains to decide if the hidden fields or any other parameters that "service/getFormQuestionsData" returns will be needed
+
+#2 GET Method "getRoutingQuestion":
+- Input parameter will be "pid" which will be the practice area id
+- The API will need to also check if pid == "" or pid == 0 to return an empty array for the parameter "routingQuestion"
+- Response value should be a JSON with 2 parameters:
+	- practiceId - which would be the practice id sent in the pid input parameter for further usage in AMP
+	- routingQuestion - an array with routing options with their values
+	- example 
+		{
+		  "routingQuestion": [
+			{
+			  "name": "Yes",
+			  "value": 83
+			},
+			{
+			  "name": "No",
+			  "value": 30
+			}
+		  ],
+		  "practiceId": 0
+		}
+
+#3 POST Method "validate_form" or a different name should be used and changed accordingly in the AMP html:
+- API must enable CORS
+- Input Content-Type: multipart/form-data;
+- Input form data will contain every form item and form item's step index as different items
+	- Example:
+		first_name: "First"
+		first_name_step: 7
+		zip: 00601
+		zip_step: 5
+		case_description: "case description"
+		case_description_step: 6
+
+- The API call will also have a query string parameter "__amp_source_origin" that will need to be used in the response headers
+- The API response headers will need to include (at least when testing prototype):
+	- Access-Control-Allow-Origin
+	- AMP-Access-Control-Allow-Source-Origin = "__amp_source_origin" parameter value
+	- Access-Control-Expose-Headers = "AMP-Access-Control-Allow-Source-Origin"
+	
+- This API will perform full validation on each form data item and generate a list of validation errors in the form of an array of JSON
+	- Example (everything OK validated)
+		Response Status Code - 200
+		Response JSON - {
+							status: "ok"
+						}
+						
+	- Example (field is invalid)
+		Response Status Code - 500
+		Response JSON - {
+							verifyErrors: [
+								{"name": "zip", "message": "Invalid ZIP Code", "step_index": FORM DATA STEP INDEX "zip_step"}
+								{"name": "case_description", "message": "Case description cannot be empty", FORM DATA STEP INDEX "case_description_step"}
+							]
+						}
+						
+	- Example (server error)
+		Response Status Code - 500
+		Response JSON - {
+							status: "not ok",
+							message: "error message"
+						}
