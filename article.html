@@ -217,37 +217,15 @@ preview: default
       <!-- ## Embedding related content -->
       <!-- -->
       <h2>Related Articles</h2>
-      <p>These articles might be interesting for you as well:</p>
+      <p>These articles might be interesting for you as well...:</p>
       <!-- It's a good idea to recommend related content to your readers. With `amp-list` it is possible to dynamically include personalized content into your AMPs. It's a good idea to link to the AMP version of related content in order to keep the user in the fast AMP world. Learn more about `amp-list` [here](/components/amp-list/) -->
       </main>
-
       <!-- ## Cookie consent -->
       <!-- Use `amp-user-notification` to implement a cookie consent form (if needed). By default, the AMP runtime doesn't use cookies. Some analytics vendors might use require cookies though. Learn more about `amp-user-notification` [here](/components/amp-user-notification/) -->
       <!--<amp-user-notification class="cookie-disclaimer" layout="nodisplay" id="amp-user-notification1">
         This page might use cookies if your analytics vendor requires them.
         <button on="tap:amp-user-notification1.dismiss">Accept</button>
       </amp-user-notification>-->
-
-      <!-- ## User analytics -->
-      <!-- Analytics must be configured in the body. Here we use Google Analytics to track pageviews.  -->
-      <amp-analytics type="googleanalytics">
-        <script type="application/json">
-{
-          "vars": {
-            "account": "UA-73836974-1"
-          },
-          "triggers": {
-            "default pageview": {
-              "on": "visible",
-              "request": "pageview",
-              "vars": {
-                "title": "{{title}}"
-              }
-            }
-          }
-        }
-        </script>
-      </amp-analytics>
 
     </body>
   </html>
