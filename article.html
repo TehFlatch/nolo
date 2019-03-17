@@ -28,10 +28,6 @@ preview: default
       <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
       <!-- Import `amp-mustache` as a format template for `amp-list` -->
       <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
-      <!-- Import `amp-analytics` for tracking usage -->
-      <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
-      <!-- Import `amp-ad` to display ads -->
-      <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 	
       <link rel="canonical" href="https://ampbyexample.com/samples_templates/news_article/">
 
@@ -227,10 +223,10 @@ preview: default
 
       <!-- ## Cookie consent -->
       <!-- Use `amp-user-notification` to implement a cookie consent form (if needed). By default, the AMP runtime doesn't use cookies. Some analytics vendors might use require cookies though. Learn more about `amp-user-notification` [here](/components/amp-user-notification/) -->
-      <amp-user-notification class="cookie-disclaimer" layout="nodisplay" id="amp-user-notification1">
+      <!--<amp-user-notification class="cookie-disclaimer" layout="nodisplay" id="amp-user-notification1">
         This page might use cookies if your analytics vendor requires them.
         <button on="tap:amp-user-notification1.dismiss">Accept</button>
-      </amp-user-notification>
+      </amp-user-notification>-->
 
       <!-- ## User analytics -->
       <!-- Analytics must be configured in the body. Here we use Google Analytics to track pageviews.  -->
