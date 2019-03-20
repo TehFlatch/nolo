@@ -113,6 +113,10 @@ preview: default
       overflow-y: hidden;
       position: relative;
     }
+    #nolo-lead>div {
+      height:100%;
+      background-color:#ffffffb8;
+    }
         </style>
 
 </head>
@@ -126,7 +130,7 @@ preview: default
   </amp-state>
   <amp-lightbox id="nolo-lead" scrollable layout="nodisplay">
       
-    <div style="height:100%; width:100%; background-color:#ffffffb8; padding-top:30px">
+    <div style="padding-top: 30px; width:100%;">
       <button on="tap:nolo-lead.close,AMP.setState({modal: {open: false}})">CLOSE</button>
   <amp-iframe class="pop-over-frame"src="https://vlamed.github.io/noloAmp/amp.html" sandbox="allow-forms allow-scripts allow-same-origin" layout="fixed-height" height="400">
       	<amp-img layout="fill" src="https://foo.com/foo.png" placeholder></amp-img>
