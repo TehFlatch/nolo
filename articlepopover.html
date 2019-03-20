@@ -10,7 +10,7 @@ preview: default
 <html ⚡ [class]="form.opened ? 'no-scrolling' : ''">
 <head>
   <meta charset="utf-8">
-  <title>News Article</title>
+  <title>News Article Popup</title>
   <link rel="shortcut icon" href="/nolo/favicon.ico">
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <!-- ## Setup -->
@@ -127,20 +127,13 @@ preview: default
   <amp-lightbox id="nolo-lead" layout="nodisplay">
       
     <div style="height:100%; width:100%; background-color:#ffffffb8; padding-top:30px">
-      <button on="tap:nolo-lead.close">X</button>
+      <button on="tap:nolo-lead.close">CLOSE</button>
       <amp-iframe class="pop-over-framse"src="https://vlamed.github.io/noloAmp/amp.html" sandbox="allow-forms allow-scripts allow-same-origin" layout="fixed-height" height="500">
       	<amp-img layout="fill" src="https://foo.com/foo.png" placeholder></amp-img>
       </amp-iframe>
     </div>
       
   </amp-lightbox>
-<amp-state id="form">
-    <script type="application/json">
-      {
-        "opened": false
-      }
-    </script>
-  </amp-state>
   <!-- -->
   <main>
     
