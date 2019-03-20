@@ -92,12 +92,18 @@ preview: default
             text-align: center;
             color: var(--color-text-light);
           }
-    i-amp-scroll-container.amp-active, i-amphtml-scroll-container.amp-active {
-      overflow-y: scroll;
-    }
 		  .pop-over-frame {
     margin-right: 15px;
     margin-left: 15px;
+}
+    .pop-over-frame:after {
+              content: '';
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(#82373700 0px, #efefefc9);
+    position: absolute;
+    width: 100%;
+    height: 20px;
 }
         </style>
 
@@ -107,10 +113,10 @@ preview: default
       
     <div style="height:100%; width:100%; background-color:#ffffffb8; padding-top:30px">
       <button on="tap:nolo-lead.close">CLOSE</button>
-      <amp-iframe class="pop-over-frame"src="https://vlamed.github.io/noloAmp/amp.html" sandbox="allow-forms allow-scripts allow-same-origin" layout="fixed-height" height="400">
+  <amp-iframe class="pop-over-frame"src="https://vlamed.github.io/noloAmp/amp.html" sandbox="allow-forms allow-scripts allow-same-origin" layout="fixed-height" height="400">
       	<amp-img layout="fill" src="https://foo.com/foo.png" placeholder></amp-img>
       </amp-iframe>
-    </div>
+      </div>
       
   </amp-lightbox>
   <!-- -->
