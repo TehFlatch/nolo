@@ -107,8 +107,11 @@ preview: default
     width: 100%;
     top: 0;
     left: 0;
-      padding-top: 130px;
+      padding-top: 40px;
     }
+	  .pop-over-frame {
+		  height: 80%;
+	  }
     .no-scrolling {
       overflow: hidden;
     }
@@ -163,7 +166,7 @@ preview: default
       <div class="close-modal" on="tap:AMP.setState({form: {opened: false}})" tabindex=99999 role="closeForm">
         X
       </div>
-      <amp-iframe src="https://vlamed.github.io/noloAmp/amp.html" sandbox="allow-forms allow-scripts allow-same-origin" layout="fixed-height" height=400>
+      <amp-iframe class="pop-over-frame"src="https://vlamed.github.io/noloAmp/amp.html" sandbox="allow-forms allow-scripts allow-same-origin" layout="fixed-height" height=400>
       <amp-img layout="fill" src="https://foo.com/foo.png" placeholder></amp-img>
       </amp-iframe>
     </div>
