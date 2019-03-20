@@ -1,7 +1,5 @@
 <!---
-
 preview: default
-
 --->
 
 <!-- ## Introduction -->
@@ -18,6 +16,7 @@ preview: default
   <!-- ## Setup -->
   <!--
         All additionally used AMP components must be imported in the header. Import `amp-social-share` for adding share buttons-->
+  <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
   <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
   <!-- Import `amp-iframe` to embed an interactive chart -->
   <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
@@ -39,10 +38,8 @@ preview: default
           --color-text-light: #fff;
           --color-text-dark: #000;
           --color-bg-light: #FAFAFC;
-
           --space-1: .5rem;  /* 8px */
           --space-2: 1rem;   /* 16px */
-
           --box-shadow-1: 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px -1px rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
           }
           .figure {
@@ -96,7 +93,7 @@ preview: default
             color: var(--color-text-light);
           }
     .hidden {
-      display: none;
+      display: none!important;
     }
     .pop-over-form {
           display: block;
@@ -105,9 +102,9 @@ preview: default
     z-index: 9999;
     height: 100%;
     width: 100%;
-    top: 0;
-    left: 0;
       padding-top: 40px;
+      top:0;
+      left:0;
     }
 	  .pop-over-frame {
 		  height: 80%;
@@ -127,6 +124,16 @@ preview: default
 
 </head>
 <body>
+  <amp-lightbox id="nolo-lead" layout="nodisplay">
+      
+    <div style="height:100%; width:100%; background-color:#ffffffb8; padding-top:30px">
+      <button on="tap:nolo-lead.close">X</button>
+      <amp-iframe class="pop-over-framse"src="https://vlamed.github.io/noloAmp/amp.html" sandbox="allow-forms allow-scripts allow-same-origin" layout="fixed-height" height="500">
+      	<amp-img layout="fill" src="https://foo.com/foo.png" placeholder></amp-img>
+      </amp-iframe>
+    </div>
+      
+  </amp-lightbox>
 <amp-state id="form">
     <script type="application/json">
       {
@@ -159,17 +166,10 @@ preview: default
     <p>
       Cum ad graeci legimus, ut duo omnesque petentium, mei saepe explicari principes eu. Ex mei ocurreret expetendis, ex errem blandit has. Phaedrum mediocrem appellantur his ut. Erat viris mediocrem id ius, ad dicta appareat assentior sit. Nec et nullam singulis moderatius, est reque vidisse copiosae eu.
     </p>
-    <button role="openForm" tabindex="99" on="tap:AMP.setState({form: {opened: true}})">
+    <button role="openForm" tabindex="99" on="tap:nolo-lead">
       Find a lawyer!
     </button>
-    <div class="hidden" [class]="form.opened ? 'pop-over-form' : 'hidden'">
-      <div class="close-modal" on="tap:AMP.setState({form: {opened: false}})" tabindex=99999 role="closeForm">
-        X
-      </div>
-      <amp-iframe class="pop-over-frame"src="https://vlamed.github.io/noloAmp/amp.html" sandbox="allow-forms allow-scripts allow-same-origin" layout="fixed-height" height=400>
-      <amp-img layout="fill" src="https://foo.com/foo.png" placeholder></amp-img>
-      </amp-iframe>
-    </div>
+    
     <p>
       Mutat dolores ea duo. Usu cu dico everti tincidunt, pri vero nullam vidisse no. Eam novum aeque populo cu. Verear contentiones ne quo, no sed consulatu definitionem.
     </p>
